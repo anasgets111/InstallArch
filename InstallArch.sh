@@ -265,6 +265,9 @@ EOT
   mkinitcpio -P
 }
 
+# Prompt user for timezone
+read -rp "Enter your timezone (e.g. 'Africa/Cairo'): " MY_TZ
+
 export -f configure_system
 export USERNAME
 export PASSWORD
@@ -279,9 +282,6 @@ export BLUE
 export GREEN
 export YELLOW
 export NC
-
-# Prompt user for timezone
-read -rp "Enter your timezone (e.g. 'Africa/Cairo'): " MY_TZ
 
 # Chroot into the new Arch system and run the configure_system script
 if ! arch-chroot /mnt /bin/bash -c "configure_system"; then
